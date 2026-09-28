@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen-Z Wedding Planner Aesthetic</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e3eae3',
+                            200: '#c7d6c7',
+                            500: '#84a084',
+                            600: '#698369',
+                            700: '#526752',
+                        },
+                        dusty: {
+                            50: '#fdf8f8',
+                            100: '#f9eded',
+                            200: '#f3d6d6',
+                            400: '#e2a3a3',
+                            500: '#d38282',
+                        },
+                        softblue: {
+                            50: '#f0f7f9',
+                            100: '#d9ebf1',
+                            500: '#7bb2c4',
+                        },
+                        gold: {
+                            400: '#e5c158',
+                            500: '#d4af37',
+                            600: '#aa8c2c',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF9F6;
+        }
+        .font-serif-custom {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c7d6c7;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #84a084;
+        }
+        .modal-active {
+            display: flex !important;
+        }
+    </style>
+</head>
+<body class="text-gray-700 bg-[#FAF9F6] antialiased">
+
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-white/80 backdrop-blur-md border-r border-sage-100 flex flex-col justify-between transition-transform duration-300 md:translate-x-0 -translate-x-full">
+            <div>
+                <!-- Logo / Header -->
+                <div class="p-6 text-center border-b border-sage-100">
+                    <span class="text-xs font-semibold tracking-widest text-dusty-500 uppercase block mb-1">Our Special Day</span>
+                    <h1 id="sidebarCouplesHeader" class="font-serif-custom text-xl font-bold text-sage-700 truncate">A & B Wedding</h1>
+                    <p class="text-xs text-gray-400 mt-1 italic">✨ Planner Aesthetic ✨</p>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav class="p-4 space-y-1.5 overflow-y-auto max-h-[calc(100vh-160px)]">
+                    <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-sage-700 bg-sage-50 font-semibold shadow-sm">
+                        <i class="fa-solid fa-house text-lg w-5 text-center"></i>
+                        <span>Dashboard</span>
+                    </button>
+                    
+                    <button onclick="switchTab('budget')" id="nav-budget" class="nav-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-gray-600 hover:bg-sage-50 hover:text-sage-700">
+                        <i class="fa-solid fa-wallet text-lg w-5 text-center"></i>
+                        <span>Budget Wedding</span>
+                    </button>
+
+                    <button onclick="switchTab('seserahan')" id="nav-seserahan" class="nav-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-gray-600 hover:bg-sage-50 hover:text-sage-700">
+                        <i class="fa-solid fa-gift text-lg w-5 text-center"></i>
+                        <span>Seserahan</span>
+                    </button>
+
+                    <button onclick="switchTab('kua')" id="nav-kua" class="nav-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-gray-600 hover:bg-sage-50 hover:text-sage-700">
+                        <i class="fa-solid fa-file-signature text-lg w-5 text-center"></i>
+                        <span>KUA & Admin</span>
+                    </button>
+
+                    <button onclick="switchTab('tamu')" id="nav-tamu" class="nav-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-gray-600 hover:bg-sage-50 hover:text-sage-700">
+                        <i class="fa-solid fa-envelope-open-text text-lg w-5 text-center"></i>
+                        <span>Tamu & Undangan</span>
+                    </button>
+
+                    <button onclick="switchTab('vendor')" id="nav-vendor" class="nav-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-gray-600 hover:bg-sage-50 hover:text-sage-700">
+                        <i class="fa-solid fa-handshake text-lg w-5 text-center"></i>
+                        <span>Vendor Wedding</span>
+                    </button>
+
+                    <button onclick="switchTab('checklist')" id="nav-checklist" class="nav-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-gray-600 hover:bg-sage-50 hover:text-sage-700">
+                        <i class="fa-solid fa-square-check text-lg w-5 text-center"></i>
+                        <span>Checklist</span>
+                    </button>
+
+                    <button onclick="switchTab('notes')" id="nav-notes" class="nav-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 text-gray-600 hover:bg-sage-50 hover:text-sage-700">
+                        <i class="fa-solid fa-note-sticky text-lg w-5 text-center"></i>
+                        <span>Sticky Notes</span>
+                    </button>
+                </nav>
+            </div>
+
+            <div class="p-4 border-t border-sage-100 text-center">
+                <p class="text-xs text-gray-400">Gen-Z Aesthetic Planner v2.0</p>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden md:ml-64">
+            
+            <header class="bg-white/80 backdrop-blur-md border-b border-sage-100 px-6 py-4 flex items-center justify-between sticky top-0 z-30">
+                <div class="flex items-center gap-3">
+                    <button id="mobileMenuBtn" onclick="toggleSidebar()" class="md:hidden text-gray-600 hover:text-sage-700 focus:outline-none p-2 rounded-lg bg-gray-50">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                    <h2 id="pageTitle" class="font-serif-custom text-xl font-bold text-sage-700">Dashboard Overview</h2>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sage-100 text-sage-700">
+                        <span class="w-2 h-2 rounded-full bg-sage-500 animate-pulse"></span> Auto-Saved
+                    </span>
+                </div>
+            </header>
+
+            <!-- CONTENT BODY -->
+            <main class="flex-1 overflow-y-auto p-4 md:p-8 space-y-8">
+
+                <section id="section-dashboard" class="tab-content block space-y-6">
+                    <!-- Couple Header Card -->
+                    <div class="relative overflow-hidden bg-gradient-to-r from-dusty-100 via-sage-50 to-softblue-100 rounded-3xl p-6 md:p-8 shadow-sm border border-sage-100">
+                        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                            <div class="text-center md:text-left space-y-2">
+                                <span class="px-3 py-1 text-xs font-bold uppercase tracking-widest text-dusty-500 bg-white/80 rounded-full shadow-xs">Wedding Couple</span>
+                                <div class="flex items-center justify-center md:justify-start gap-3 mt-2 flex-wrap">
+                                    <input type="text" id="groomName" value="Alex" onchange="saveCoupleData()" class="font-serif-custom text-2xl md:text-3xl font-bold text-sage-700 bg-transparent border-b border-dashed border-sage-500 text-center md:text-left focus:outline-none focus:border-sage-700 w-36 md:w-48" placeholder="Nama CPP">
+                                    <span class="font-serif-custom text-xl text-dusty-400 italic">&</span>
+                                    <input type="text" id="brideName" value="Bella" onchange="saveCoupleData()" class="font-serif-custom text-2xl md:text-3xl font-bold text-sage-700 bg-transparent border-b border-dashed border-sage-500 text-center md:text-left focus:outline-none focus:border-sage-700 w-36 md:w-48" placeholder="Nama CPW">
+                                </div>
+                                <div class="flex items-center justify-center md:justify-start gap-2 pt-2">
+                                    <i class="fa-regular fa-calendar-heart text-dusty-500"></i>
+                                    <input type="date" id="weddingDate" onchange="saveCoupleData()" class="bg-white/80 border border-sage-200 text-gray-700 text-sm rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-sage-500 shadow-xs">
+                                </div>
+                            </div>
+
+                            <!-- Countdown Box -->
+                            <div class="bg-white/90 backdrop-blur-sm p-5 rounded-2xl border border-sage-100 text-center shadow-sm min-w-[200px]">
+                                <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block">Countdown</span>
+                                <div id="countdownDays" class="font-serif-custom text-4xl font-extrabold text-sage-600 my-1">H-0</div>
+                                <span class="text-xs text-dusty-500 font-medium">Menuju Hari Bahagia ✨</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gen-Z Quote Card -->
+                    <div class="bg-white rounded-2xl p-4 border border-sage-100 flex items-center gap-4 shadow-xs">
+                        <div class="p-3 bg-dusty-100 text-dusty-500 rounded-xl text-xl">
+                            <i class="fa-solid fa-sparkles"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm italic font-medium text-gray-600">"Planning a wedding should be as aesthetic as the vibe! Slow down, enjoy the journey, and no stress allowed! 🤍"</p>
+                        </div>
+                    </div>
+
+                    <!-- Summary Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-white p-5 rounded-2xl border border-sage-100 shadow-xs space-y-2">
+                            <div class="flex items-center justify-between text-gray-400">
+                                <span class="text-xs font-semibold uppercase">Total Estimasi Budget</span>
+                                <i class="fa-solid fa-calculator text-sage-500"></i>
+                            </div>
+                            <h3 id="dashTotalBudget" class="text-xl font-bold text-gray-800">Rp 0</h3>
+                            <p class="text-xs text-gray-400">Seluruh estimasi budget</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-sage-100 shadow-xs space-y-2">
+                            <div class="flex items-center justify-between text-gray-400">
+                                <span class="text-xs font-semibold uppercase">Aktual Terpakai</span>
+                                <i class="fa-solid fa-receipt text-dusty-500"></i>
+                            </div>
+                            <h3 id="dashTotalActual" class="text-xl font-bold text-dusty-500">Rp 0</h3>
+                            <p class="text-xs text-gray-400">Total biaya terpakai</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-sage-100 shadow-xs space-y-2">
+                            <div class="flex items-center justify-between text-gray-400">
+                                <span class="text-xs font-semibold uppercase">Checklist Selesai</span>
+                                <i class="fa-solid fa-list-check text-softblue-500"></i>
+                            </div>
+                            <h3 id="dashChecklistCount" class="text-xl font-bold text-gray-800">0 / 0</h3>
+                            <div class="w-full bg-gray-100 rounded-full h-1.5 mt-2">
+                                <div id="dashChecklistProgress" class="bg-sage-500 h-1.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-sage-100 shadow-xs space-y-2">
+                            <div class="flex items-center justify-between text-gray-400">
+                                <span class="text-xs font-semibold uppercase">Tamu Terkonfirmasi</span>
+                                <i class="fa-solid fa-users text-gold-500"></i>
+                            </div>
+                            <h3 id="dashGuestsConfirmed" class="text-xl font-bold text-gray-800">0 Pax</h3>
+                            <p class="text-xs text-gray-400">Total RSVP Hadir</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-budget" class="tab-content hidden space-y-6">
+                    <!-- Top Summary & Action -->
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl border border-sage-100 shadow-xs">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full md:w-auto">
+                            <div>
+                                <span class="text-xs font-semibold text-gray-400 uppercase">Estimasi Budget</span>
+                                <p id="budgetSumEstimasi" class="text-lg font-bold text-sage-700">Rp 0</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold text-gray-400 uppercase">Total DP Paid</span>
+                                <p id="budgetSumDP" class="text-lg font-bold text-softblue-500">Rp 0</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold text-gray-400 uppercase">Total Aktual</span>
+                                <p id="budgetSumAktual" class="text-lg font-bold text-dusty-500">Rp 0</p>
+                            </div>
+                        </div>
+                        <button onclick="openBudgetModal()" class="w-full md:w-auto px-5 py-2.5 bg-sage-600 hover:bg-sage-700 text-white rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition shadow-xs">
+                            <i class="fa-solid fa-plus"></i> Tambah Item Budget
+                        </button>
+                    </div>
+
+                    <!-- Budget Table -->
+                    <div class="bg-white rounded-2xl border border-sage-100 shadow-xs overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse min-w-[800px]">
+                                <thead>
+                                    <tr class="bg-sage-50 text-sage-700 text-xs font-bold uppercase tracking-wider border-b border-sage-100">
+                                        <th class="p-4">Nama Item</th>
+                                        <th class="p-4">Kategori</th>
+                                        <th class="p-4">Estimasi (Rp)</th>
+                                        <th class="p-4">DP Paid (Rp)</th>
+                                        <th class="p-4">Aktual (Rp)</th>
+                                        <th class="p-4">Status Bayar</th>
+                                        <th class="p-4 text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="budgetTableBody" class="divide-y divide-sage-100 text-sm">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-seserahan" class="tab-content hidden space-y-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl border border-sage-100 shadow-xs">
+                        <div>
+                            <span class="text-xs font-semibold text-gray-400 uppercase">Total Budget Seserahan</span>
+                            <p id="seserahanTotalCost" class="text-2xl font-bold text-sage-700">Rp 0</p>
+                        </div>
+                        <button onclick="openSeserahanModal()" class="w-full md:w-auto px-5 py-2.5 bg-sage-600 hover:bg-sage-700 text-white rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition shadow-xs">
+                            <i class="fa-solid fa-plus"></i> Tambah Barang Seserahan
+                        </button>
+                    </div>
+
+                    <!-- Category Tabs for Seserahan -->
+                    <div class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-sage-100" id="seserahanCatTabs">
+                        <!-- Dynamic Tabs -->
+                    </div>
+
+                    <!-- Table -->
+                    <div class="bg-white rounded-2xl border border-sage-100 shadow-xs overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse min-w-[900px]">
+                                <thead>
+                                    <tr class="bg-sage-50 text-sage-700 text-xs font-bold uppercase tracking-wider border-b border-sage-100">
+                                        <th class="p-4">Barang</th>
+                                        <th class="p-4">Qty</th>
+                                        <th class="p-4">Vendor/Toko</th>
+                                        <th class="p-4">Link Produk</th>
+                                        <th class="p-4">Estimasi</th>
+                                        <th class="p-4">Aktual</th>
+                                        <th class="p-4">Status</th>
+                                        <th class="p-4 text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="seserahanTableBody" class="divide-y divide-sage-100 text-sm">
+                                    <!-- Dynamic Content -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-kua" class="tab-content hidden space-y-6">
+                    <div class="bg-white p-6 rounded-2xl border border-sage-100 shadow-xs">
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <h3 class="font-serif-custom text-lg font-bold text-sage-700">Checklist Berkas Nikah (KUA / Sipil)</h3>
+                                <p class="text-xs text-gray-400">Pastikan semua dokumen administrasi lengkap sebelum pendaftaran.</p>
+                            </div>
+                            <button onclick="openKuaModal()" class="px-4 py-2 bg-sage-600 text-white rounded-xl text-xs font-semibold hover:bg-sage-700 transition">
+                                + Tambah Berkas
+                            </button>
+                        </div>
+
+                        <div id="kuaListContainer" class="space-y-3">
+                            <!-- Dynamic Checklists -->
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-tamu" class="tab-content hidden space-y-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl border border-sage-100 shadow-xs">
+                        <div class="flex flex-wrap gap-2" id="tamuFilterBtns">
+                            <button onclick="filterTamu('ALL')" class="filter-tamu-btn px-4 py-2 text-xs font-semibold rounded-xl bg-sage-600 text-white">Semua</button>
+                            <button onclick="filterTamu('Fisik')" class="filter-tamu-btn px-4 py-2 text-xs font-semibold rounded-xl bg-gray-100 text-gray-600 hover:bg-sage-100">Undangan Fisik</button>
+                            <button onclick="filterTamu('Digital')" class="filter-tamu-btn px-4 py-2 text-xs font-semibold rounded-xl bg-gray-100 text-gray-600 hover:bg-sage-100">Undangan Digital</button>
+                        </div>
+                        <button onclick="openTamuModal()" class="w-full md:w-auto px-5 py-2.5 bg-sage-600 hover:bg-sage-700 text-white rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition shadow-xs">
+                            <i class="fa-solid fa-plus"></i> Tambah Tamu
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-sage-100 shadow-xs overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse min-w-[800px]">
+                                <thead>
+                                    <tr class="bg-sage-50 text-sage-700 text-xs font-bold uppercase tracking-wider border-b border-sage-100">
+                                        <th class="p-4">Nama Tamu</th>
+                                        <th class="p-4">Kategori</th>
+                                        <th class="p-4">Jenis Undangan</th>
+                                        <th class="p-4">Pax</th>
+                                        <th class="p-4">Status RSVP</th>
+                                        <th class="p-4">Status Pengiriman</th>
+                                        <th class="p-4 text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tamuTableBody" class="divide-y divide-sage-100 text-sm">
+                                    <!-- Dynamic Tamu Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-vendor" class="tab-content hidden space-y-6">
+                    <div class="flex justify-between items-center bg-white p-6 rounded-2xl border border-sage-100 shadow-xs">
+                        <div>
+                            <h3 class="font-serif-custom text-lg font-bold text-sage-700">Direktori Vendor Wedding</h3>
+                            <p class="text-xs text-gray-400">Kelola kontak, status deal, dan pembayaran vendor.</p>
+                        </div>
+                        <button onclick="openVendorModal()" class="px-5 py-2.5 bg-sage-600 hover:bg-sage-700 text-white rounded-xl text-sm font-semibold flex items-center gap-2 transition shadow-xs">
+                            <i class="fa-solid fa-plus"></i> Tambah Vendor
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-sage-100 shadow-xs overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse min-w-[900px]">
+                                <thead>
+                                    <tr class="bg-sage-50 text-sage-700 text-xs font-bold uppercase tracking-wider border-b border-sage-100">
+                                        <th class="p-4">Nama Vendor</th>
+                                        <th class="p-4">Kategori</th>
+                                        <th class="p-4">Kontak / Sosmed</th>
+                                        <th class="p-4">Status Deal</th>
+                                        <th class="p-4">DP Paid</th>
+                                        <th class="p-4">Total Biaya</th>
+                                        <th class="p-4">Catatan / Layanan</th>
+                                        <th class="p-4 text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="vendorTableBody" class="divide-y divide-sage-100 text-sm">
+                                    <!-- Dynamic Vendor Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-checklist" class="tab-content hidden space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="checklistTimelineContainer">
+                        <!-- Dynamic Checklist Blocks for H-6 Bulan, H-3 Bulan, etc. -->
+                    </div>
+                </section>
+
+                <section id="section-notes" class="tab-content hidden space-y-6">
+                    <div class="flex justify-between items-center bg-white p-6 rounded-2xl border border-sage-100 shadow-xs">
+                        <div>
+                            <h3 class="font-serif-custom text-lg font-bold text-sage-700">Aesthetic Sticky Notes 📝</h3>
+                            <p class="text-xs text-gray-400">Catat ide kado, lagu wedding, moodboard, atau random thought!</p>
+                        </div>
+                        <button onclick="addStickyNote()" class="px-5 py-2.5 bg-sage-600 hover:bg-sage-700 text-white rounded-xl text-sm font-semibold flex items-center gap-2 transition shadow-xs">
+                            <i class="fa-solid fa-plus"></i> Tambah Note Baru
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="stickyNotesContainer">
+                        <!-- Dynamic Sticky Notes -->
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODALS FOR ADDING / EDITING ITEMS -->
+    
+    <!-- Modal Budget -->
+    <div id="modalBudget" class="fixed inset-0 bg-black/40 backdrop-blur-xs hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md space-y-4 shadow-xl">
+            <h3 id="modalBudgetTitle" class="font-serif-custom text-xl font-bold text-sage-700">Tambah Item Budget</h3>
+            <input type="hidden" id="budgetEditIndex" value="-1">
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Nama Item</label>
+                    <input type="text" id="inputBudgetName" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Kategori</label>
+                    <select id="inputBudgetCategory" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                        <option value="Dekorasi & Tenda">Dekorasi & Tenda</option>
+                        <option value="Busana & Rias (MUA)">Busana & Rias (MUA)</option>
+                        <option value="Dokumentasi (Foto/Video)">Dokumentasi (Foto/Video)</option>
+                        <option value="Souvenir">Souvenir</option>
+                        <option value="Undangan">Undangan</option>
+                        <option value="Sound System & Hiburan">Sound System & Hiburan</option>
+                        <option value="Administrasi KUA">Administrasi KUA</option>
+                        <option value="Seserahan">Seserahan</option>
+                        <option value="Transportasi">Transportasi</option>
+                        <option value="Tak Terduga">Tak Terduga</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Estimasi Harga (Rp)</label>
+                    <input type="number" id="inputBudgetEstimasi" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none" placeholder="0">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">DP Paid (Rp)</label>
+                    <input type="number" id="inputBudgetDP" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none" placeholder="0">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Harga Aktual (Rp)</label>
+                    <input type="number" id="inputBudgetAktual" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none" placeholder="0">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Status Pembayaran</label>
+                    <select id="inputBudgetStatus" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                        <option value="Belum DP">Belum DP</option>
+                        <option value="DP Paid">DP Paid</option>
+                        <option value="Lunas">Lunas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closeModal('modalBudget')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-xl text-xs font-semibold">Batal</button>
+                <button onclick="saveBudgetItem()" class="px-5 py-2 bg-sage-600 hover:bg-sage-700 text-white rounded-xl text-xs font-semibold">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Seserahan -->
+    <div id="modalSeserahan" class="fixed inset-0 bg-black/40 backdrop-blur-xs hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md space-y-4 shadow-xl">
+            <h3 id="modalSeserahanTitle" class="font-serif-custom text-xl font-bold text-sage-700">Barang Seserahan</h3>
+            <input type="hidden" id="seserahanEditIndex" value="-1">
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Nama Barang</label>
+                    <input type="text" id="inputSeserahanName" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Kategori</label>
+                    <select id="inputSeserahanCategory" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                        <option value="Perlengkapan Ibadah">Perlengkapan Ibadah</option>
+                        <option value="Baju & Aksesoris">Baju & Aksesoris</option>
+                        <option value="Skincare & Make Up">Skincare & Make Up</option>
+                        <option value="Alat Mandi & Body Care">Alat Mandi & Body Care</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Jumlah (Qty)</label>
+                        <input type="number" id="inputSeserahanQty" value="1" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Nama Vendor/Toko</label>
+                        <input type="text" id="inputSeserahanVendor" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Link Produk (URL)</label>
+                    <input type="text" id="inputSeserahanLink" placeholder="https://..." class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Estimasi (Rp)</label>
+                        <input type="number" id="inputSeserahanEstimasi" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none" placeholder="0">
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Aktual (Rp)</label>
+                        <input type="number" id="inputSeserahanAktual" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none" placeholder="0">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Status Barang</label>
+                    <select id="inputSeserahanStatus" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                        <option value="Wishlist">Wishlist</option>
+                        <option value="Dibeli">Dibeli</option>
+                        <option value="Dibungkus/Siap">Dibungkus / Siap</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closeModal('modalSeserahan')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-xl text-xs font-semibold">Batal</button>
+                <button onclick="saveSeserahanItem()" class="px-5 py-2 bg-sage-600 hover:bg-sage-700 text-white rounded-xl text-xs font-semibold">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal KUA -->
+    <div id="modalKua" class="fixed inset-0 bg-black/40 backdrop-blur-xs hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md space-y-4 shadow-xl">
+            <h3 class="font-serif-custom text-xl font-bold text-sage-700">Tambah Berkas Nikah</h3>
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Nama Dokumen / Syarat</label>
+                    <input type="text" id="inputKuaTitle" placeholder="Misal: Surat N1 N4 / Fotokopi KTP" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Catatan Tambahan</label>
+                    <input type="text" id="inputKuaNotes" placeholder="Misal: Diurus RT/RW dulu" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                </div>
+            </div>
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closeModal('modalKua')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-xl text-xs font-semibold">Batal</button>
+                <button onclick="saveKuaItem()" class="px-5 py-2 bg-sage-600 hover:bg-sage-700 text-white rounded-xl text-xs font-semibold">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tamu -->
+    <div id="modalTamu" class="fixed inset-0 bg-black/40 backdrop-blur-xs hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md space-y-4 shadow-xl">
+            <h3 id="modalTamuTitle" class="font-serif-custom text-xl font-bold text-sage-700">Tambah Undangan Tamu</h3>
+            <input type="hidden" id="tamuEditIndex" value="-1">
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Nama Tamu</label>
+                    <input type="text" id="inputTamuName" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Kategori</label>
+                        <select id="inputTamuCategory" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                            <option value="Keluarga">Keluarga</option>
+                            <option value="Teman">Teman</option>
+                            <option value="VIP">VIP</option>
+                            <option value="Rekan Kerja">Rekan Kerja</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Jenis Undangan</label>
+                        <select id="inputTamuType" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                            <option value="Fisik">Fisik</option>
+                            <option value="Digital">Digital</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Pax</label>
+                        <input type="number" id="inputTamuPax" value="1" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">RSVP</label>
+                        <select id="inputTamuRsvp" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                            <option value="Menunggu">Menunggu</option>
+                            <option value="Hadir">Hadir</option>
+                            <option value="Ragu">Ragu</option>
+                            <option value="Tidak Hadir">Tidak Hadir</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Status Kirim</label>
+                        <select id="inputTamuStatus" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                            <option value="Belum">Belum</option>
+                            <option value="Terkirim">Terkirim</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closeModal('modalTamu')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-xl text-xs font-semibold">Batal</button>
+                <button onclick="saveTamuItem()" class="px-5 py-2 bg-sage-600 hover:bg-sage-700 text-white rounded-xl text-xs font-semibold">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Vendor -->
+    <div id="modalVendor" class="fixed inset-0 bg-black/40 backdrop-blur-xs hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md space-y-4 shadow-xl">
+            <h3 id="modalVendorTitle" class="font-serif-custom text-xl font-bold text-sage-700">Vendor Wedding</h3>
+            <input type="hidden" id="vendorEditIndex" value="-1">
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Nama Vendor</label>
+                    <input type="text" id="inputVendorName" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Kategori Vendor</label>
+                    <select id="inputVendorCategory" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                        <option value="Dekorasi & Tenda">Dekorasi & Tenda</option>
+                        <option value="Busana & Rias (MUA)">Busana & Rias (MUA)</option>
+                        <option value="Dokumentasi (Foto/Video)">Dokumentasi (Foto/Video)</option>
+                        <option value="Souvenir">Souvenir</option>
+                        <option value="Undangan">Undangan</option>
+                        <option value="Sound System & Hiburan">Sound System & Hiburan</option>
+                        <option value="Tak Terduga / Lainnya">Tak Terduga / Lainnya</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Kontak / Sosmed</label>
+                    <input type="text" id="inputVendorContact" placeholder="@instagram / WA 0812..." class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Status Deal</label>
+                        <select id="inputVendorStatus" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                            <option value="Survey / Nego">Survey / Nego</option>
+                            <option value="Deal / Kontrak">Deal / Kontrak</option>
+                            <option value="Selesai">Selesai</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">DP Paid (Rp)</label>
+                        <input type="number" id="inputVendorDP" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none" placeholder="0">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Total Biaya Vendor (Rp)</label>
+                    <input type="number" id="inputVendorTotal" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none" placeholder="0">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-500">Catatan / Paket Layanan</label>
+                    <input type="text" id="inputVendorNotes" class="w-full border border-gray-200 rounded-xl p-2.5 focus:ring-2 focus:ring-sage-500 focus:outline-none">
+                </div>
+            </div>
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closeModal('modalVendor')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-xl text-xs font-semibold">Batal</button>
+                <button onclick="saveVendorItem()" class="px-5 py-2 bg-sage-600 hover:bg-sage-700 text-white rounded-xl text-xs font-semibold">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* APP STATE INITIALIZATION */
+        const STORAGE_KEY = 'GENZ_WEDDING_PLANNER_DATA_V2';
+
+        let appData = {
+            couple: {
+                groom: 'Alex',
+                bride: 'Bella',
+                date: '2025-12-12'
+            },
+            budget: [
+                { name: 'Sewa Tenda & Dekor Bunga', category: 'Dekorasi & Tenda', estimasi: 15000000, dp: 5000000, aktual: 15000000, status: 'DP Paid' },
+                { name: 'MUA Pengantin & Orang Tua', category: 'Busana & Rias (MUA)', estimasi: 8000000, dp: 2000000, aktual: 7500000, status: 'DP Paid' },
+                { name: 'Foto & Video Cinematic', category: 'Dokumentasi (Foto/Video)', estimasi: 10000000, dp: 3000000, aktual: 10000000, status: 'DP Paid' }
+            ],
+            seserahan: [
+                { name: 'Mukena Premium & Al-Qur\'an', category: 'Perlengkapan Ibadah', qty: 1, vendor: 'Sajada Official', link: 'https://shopee.co.id', estimasi: 750000, aktual: 700000, status: 'Dibeli' },
+                { name: 'Set Skincare Glowing', category: 'Skincare & Make Up', qty: 1, vendor: 'Beauty Shop', link: '', estimasi: 1200000, aktual: 1200000, status: 'Dibungkus/Siap' }
+            ],
+            kua: [
+                { id: 1, title: 'Surat N1 - N4 dari Kelurahan', notes: 'Minta pengantar RT/RW dulu', completed: true },
+                { id: 2, title: 'Fotokopi KTP & KK Calon Pengantin', notes: 'Foto 3x4 latar biru 4 lembar', completed: true },
+                { id: 3, title: 'Sertifikat Imunisasi / Bimbingan Perkawinan', notes: 'Daftar di Puskesmas terdekat', completed: false }
+            ],
+            tamu: [
+                { name: 'Bapak Rahmat & Keluarga', category: 'Keluarga', type: 'Fisik', pax: 4, rsvp: 'Hadir', status: 'Terkirim' },
+                { name: 'Geng SMA Highschool', category: 'Teman', type: 'Digital', pax: 5, rsvp: 'Menunggu', status: 'Belum' }
+            ],
+            vendor: [
+                { name: 'Glow Decor Studio', category: 'Dekorasi & Tenda', contact: '@glowdecor_id', status: 'Deal / Kontrak', dp: 5000000, total: 15000000, notes: 'Tema Rustic Sage & Cream' }
+            ],
+            checklist: [
+                { id: 'c1', timeline: 'H-6 Bulan', task: 'Menentukan Anggaran & Tanggal Pernikahan', done: true },
+                { id: 'c2', timeline: 'H-6 Bulan', task: 'Memilih & Booking Gedung/Lokasi', done: true },
+                { id: 'c3', timeline: 'H-3 Bulan', task: 'Daftar & Urus Berkas ke KUA', done: false },
+                { id: 'c4', timeline: 'H-3 Bulan', task: 'Fitting Baju Pengantin & Seragam Keluarga', done: false },
+                { id: 'c5', timeline: 'H-1 Bulan', task: 'Cetak & Sebar Undangan (Fisik/Digital)', done: false },
+                { id: 'c6', timeline: 'Hari H', task: 'Technical Meeting Final & Relaksasi ✨', done: false }
+            ],
+            notes: [
+                { id: 1, text: '💡 Note: Jangan lupa konfirmasi MUA jam 04.00 pagi untuk subuh makeover!' },
+                { id: 2, text: '🎵 Playlists Songs: Lagu pas wedding entrance pake Acoustic Pop!' }
+            ]
+        };
+
+        let currentSeserahanTab = 'Semua';
+        let currentTamuFilter = 'ALL';
+
+        /* INIT & LOCALSTORAGE HANDLERS */
+        function loadData() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try {
+                    appData = JSON.parse(saved);
+                } catch(e) {
+                    console.error("Failed to parse stored data", e);
+                }
+            }
+        }
+
+        function saveData() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+            updateDashboardOverview();
+        }
+
+        /* FORMATTERS & UTILS */
+        function formatRupiah(num) {
+            if (isNaN(num) || num === '' || num === null) return 'Rp 0';
+            return 'Rp ' + Number(num).toLocaleString('id-ID');
+        }
+
+        function unformatRupiah(str) {
+            if (typeof str === 'number') return str;
+            return parseFloat(str.replace(/[^0-9-]/g, '')) || 0;
+        }
+
+        /* TAB NAVIGATION */
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById(`section-${tabName}`);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-sage-50', 'text-sage-700', 'font-semibold', 'shadow-sm');
+                btn.classList.add('text-gray-600');
+            });
+
+            const activeBtn = document.getElementById(`nav-${tabName}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-sage-50', 'text-sage-700', 'font-semibold', 'shadow-sm');
+                activeBtn.classList.remove('text-gray-600');
+            }
+
+            // Update Header Title
+            const pageTitles = {
+                dashboard: 'Dashboard Overview',
+                budget: 'Budget & Keuangan Wedding',
+                seserahan: 'Daftar Seserahan & Link Produk',
+                kua: 'KUA & Berkas Administrasi',
+                tamu: 'Tamu Undangan & RSVP',
+                vendor: 'Direktori & Status Vendor',
+                checklist: 'Wedding Timeline Checklist',
+                notes: 'Sticky Notes / Catatan Bebas'
+            };
+            document.getElementById('pageTitle').textContent = pageTitles[tabName] || 'Planner';
+
+            // Close sidebar on mobile
+            if (window.innerWidth < 768) {
+                document.getElementById('sidebar').classList.add('-translate-x-full');
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('-translate-x-full');
+        }
+
+        function initDashboard() {
+            document.getElementById('groomName').value = appData.couple.groom || '';
+            document.getElementById('brideName').value = appData.couple.bride || '';
+            document.getElementById('weddingDate').value = appData.couple.date || '';
+            updateCoupleHeader();
+            updateDashboardOverview();
+        }
+
+        function saveCoupleData() {
+            appData.couple.groom = document.getElementById('groomName').value;
+            appData.couple.bride = document.getElementById('brideName').value;
+            appData.couple.date = document.getElementById('weddingDate').value;
+            updateCoupleHeader();
+            saveData();
+        }
+
+        function updateCoupleHeader() {
+            const g = appData.couple.groom || 'CPP';
+            const b = appData.couple.bride || 'CPW';
+            document.getElementById('sidebarCouplesHeader').textContent = `${g} & ${b} Wedding`;
+            calculateCountdown();
+        }
+
+        function calculateCountdown() {
+            if (!appData.couple.date) {
+                document.getElementById('countdownDays').textContent = 'H-0';
+                return;
+            }
+            const target = new Date(appData.couple.date);
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            target.setHours(0,0,0,0);
+            const diffTime = target - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays >= 0) {
+                document.getElementById('countdownDays').textContent = `H-${diffDays}`;
+            } else {
+                document.getElementById('countdownDays').textContent = `H+${Math.abs(diffDays)}`;
+            }
+        }
+
+        function updateDashboardOverview() {
+            // Totals from Budget
+            const totalEst = appData.budget.reduce((acc, curr) => acc + Number(curr.estimasi || 0), 0);
+            const totalAct = appData.budget.reduce((acc, curr) => acc + Number(curr.aktual || 0), 0);
+            
+            document.getElementById('dashTotalBudget').textContent = formatRupiah(totalEst);
+            document.getElementById('dashTotalActual').textContent = formatRupiah(totalAct);
+
+            // Checklist
+            const totalTasks = appData.checklist.length;
+            const completedTasks = appData.checklist.filter(t => t.done).length;
+            const pct = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
+            document.getElementById('dashChecklistCount').textContent = `${completedTasks} / ${totalTasks}`;
+            document.getElementById('dashChecklistProgress').style.width = `${pct}%`;
+
+            // Guests Confirmed
+            const confirmedPax = appData.tamu
+                .filter(t => t.rsvp === 'Hadir')
+                .reduce((acc, t) => acc + Number(t.pax || 0), 0);
+            document.getElementById('dashGuestsConfirmed').textContent = `${confirmedPax} Pax`;
+        }
+
+        function renderBudgetTable() {
+            const tbody = document.getElementById('budgetTableBody');
+            tbody.innerHTML = '';
+
+            let sumEst = 0, sumDP = 0, sumAkt = 0;
+
+            appData.budget.forEach((item, index) => {
+                sumEst += Number(item.estimasi || 0);
+                sumDP += Number(item.dp || 0);
+                sumAkt += Number(item.aktual || 0);
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-sage-50/50 transition";
+                tr.innerHTML = `
+                    <td class="p-4 font-semibold text-gray-800">${escapeHtml(item.name)}</td>
+                    <td class="p-4"><span class="px-2.5 py-1 text-xs rounded-full bg-sage-100 text-sage-700 font-medium">${escapeHtml(item.category)}</span></td>
+                    <td class="p-4">
+                        <input type="text" value="${formatRupiah(item.estimasi)}" 
+                            onfocus="this.value='${item.estimasi}'" 
+                            onblur="updateBudgetInline(${index}, 'estimasi', this.value)"
+                            class="bg-transparent border-b border-transparent focus:border-sage-500 w-28 font-medium focus:bg-white focus:p-1 rounded transition">
+                    </td>
+                    <td class="p-4">
+                        <input type="text" value="${formatRupiah(item.dp)}" 
+                            onfocus="this.value='${item.dp}'" 
+                            onblur="updateBudgetInline(${index}, 'dp', this.value)"
+                            class="bg-transparent border-b border-transparent focus:border-sage-500 w-28 text-softblue-500 font-medium focus:bg-white focus:p-1 rounded transition">
+                    </td>
+                    <td class="p-4">
+                        <input type="text" value="${formatRupiah(item.aktual)}" 
+                            onfocus="this.value='${item.aktual}'" 
+                            onblur="updateBudgetInline(${index}, 'aktual', this.value)"
+                            class="bg-transparent border-b border-transparent focus:border-sage-500 w-28 text-dusty-500 font-semibold focus:bg-white focus:p-1 rounded transition">
+                    </td>
+                    <td class="p-4">
+                        <span class="px-2.5 py-1 text-xs rounded-full font-medium ${getStatusBadgeClass(item.status)}">${item.status}</span>
+                    </td>
+                    <td class="p-4 text-center space-x-2">
+                        <button onclick="editBudgetItem(${index})" class="text-gray-400 hover:text-sage-600 transition"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteBudgetItem(${index})" class="text-gray-400 hover:text-red-500 transition"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('budgetSumEstimasi').textContent = formatRupiah(sumEst);
+            document.getElementById('budgetSumDP').textContent = formatRupiah(sumDP);
+            document.getElementById('budgetSumAktual').textContent = formatRupiah(sumAkt);
+        }
+
+        function getStatusBadgeClass(status) {
+            if (status === 'Lunas') return 'bg-emerald-100 text-emerald-700';
+            if (status === 'DP Paid') return 'bg-softblue-100 text-softblue-500';
+            return 'bg-amber-100 text-amber-700';
+        }
+
+        function updateBudgetInline(index, field, value) {
+            appData.budget[index][field] = unformatRupiah(value);
+            saveData();
+            renderBudgetTable();
+        }
+
+        function openBudgetModal(editIdx = -1) {
+            document.getElementById('budgetEditIndex').value = editIdx;
+            if (editIdx >= 0) {
+                const item = appData.budget[editIdx];
+                document.getElementById('modalBudgetTitle').textContent = 'Edit Item Budget';
+                document.getElementById('inputBudgetName').value = item.name;
+                document.getElementById('inputBudgetCategory').value = item.category;
+                document.getElementById('inputBudgetEstimasi').value = item.estimasi;
+                document.getElementById('inputBudgetDP').value = item.dp;
+                document.getElementById('inputBudgetAktual').value = item.aktual;
+                document.getElementById('inputBudgetStatus').value = item.status;
+            } else {
+                document.getElementById('modalBudgetTitle').textContent = 'Tambah Item Budget';
+                document.getElementById('inputBudgetName').value = '';
+                document.getElementById('inputBudgetEstimasi').value = '';
+                document.getElementById('inputBudgetDP').value = '';
+                document.getElementById('inputBudgetAktual').value = '';
+            }
+            openModal('modalBudget');
+        }
+
+        function saveBudgetItem() {
+            const idx = parseInt(document.getElementById('budgetEditIndex').value);
+            const newItem = {
+                name: document.getElementById('inputBudgetName').value || 'Tanpa Nama',
+                category: document.getElementById('inputBudgetCategory').value,
+                estimasi: parseFloat(document.getElementById('inputBudgetEstimasi').value) || 0,
+                dp: parseFloat(document.getElementById('inputBudgetDP').value) || 0,
+                aktual: parseFloat(document.getElementById('inputBudgetAktual').value) || 0,
+                status: document.getElementById('inputBudgetStatus').value
+            };
+
+            if (idx >= 0) {
+                appData.budget[idx] = newItem;
+            } else {
+                appData.budget.push(newItem);
+            }
+
+            saveData();
+            renderBudgetTable();
+            closeModal('modalBudget');
+        }
+
+        function editBudgetItem(index) {
+            openBudgetModal(index);
+        }
+
+        function deleteBudgetItem(index) {
+            if (confirm('Yakin ingin menghapus item budget ini?')) {
+                appData.budget.splice(index, 1);
+                saveData();
+                renderBudgetTable();
+            }
+        }
+
+        const seserahanCategories = ['Semua', 'Perlengkapan Ibadah', 'Baju & Aksesoris', 'Skincare & Make Up', 'Alat Mandi & Body Care', 'Lainnya'];
+
+        function renderSeserahanTabs() {
+            const container = document.getElementById('seserahanCatTabs');
+            container.innerHTML = '';
+            seserahanCategories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `px-4 py-2 text-xs font-semibold rounded-xl whitespace-nowrap transition ${cat === currentSeserahanTab ? 'bg-sage-600 text-white shadow-xs' : 'bg-white text-gray-600 border border-sage-100 hover:bg-sage-50'}`;
+                btn.textContent = cat;
+                btn.onclick = () => {
+                    currentSeserahanTab = cat;
+                    renderSeserahanTabs();
+                    renderSeserahanTable();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function renderSeserahanTable() {
+            const tbody = document.getElementById('seserahanTableBody');
+            tbody.innerHTML = '';
+
+            let totalActualCost = 0;
+
+            appData.seserahan.forEach((item, index) => {
+                totalActualCost += Number(item.aktual || 0);
+
+                if (currentSeserahanTab !== 'Semua' && item.category !== currentSeserahanTab) {
+                    return;
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-sage-50/50 transition";
+                
+                const linkHTML = item.link 
+                    ? `<a href="${escapeHtml(item.link)}" target="_blank" class="text-sage-600 underline text-xs font-semibold hover:text-sage-700"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Link</a>` 
+                    : `<span class="text-gray-300 text-xs italic">-</span>`;
+
+                tr.innerHTML = `
+                    <td class="p-4 font-semibold text-gray-800">${escapeHtml(item.name)}</td>
+                    <td class="p-4 font-medium text-gray-600">${item.qty || 1}</td>
+                    <td class="p-4 text-gray-600">${escapeHtml(item.vendor || '-')}</td>
+                    <td class="p-4">${linkHTML}</td>
+                    <td class="p-4">
+                        <input type="text" value="${formatRupiah(item.estimasi)}" 
+                            onfocus="this.value='${item.estimasi}'" 
+                            onblur="updateSeserahanInline(${index}, 'estimasi', this.value)"
+                            class="bg-transparent border-b border-transparent focus:border-sage-500 w-24 font-medium focus:bg-white focus:p-1 rounded transition">
+                    </td>
+                    <td class="p-4">
+                        <input type="text" value="${formatRupiah(item.aktual)}" 
+                            onfocus="this.value='${item.aktual}'" 
+                            onblur="updateSeserahanInline(${index}, 'aktual', this.value)"
+                            class="bg-transparent border-b border-transparent focus:border-sage-500 w-24 text-dusty-500 font-semibold focus:bg-white focus:p-1 rounded transition">
+                    </td>
+                    <td class="p-4">
+                        <span class="px-2.5 py-1 text-xs rounded-full font-medium ${getSeserahanBadgeClass(item.status)}">${item.status}</span>
+                    </td>
+                    <td class="p-4 text-center space-x-2">
+                        <button onclick="editSeserahanItem(${index})" class="text-gray-400 hover:text-sage-600 transition"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteSeserahanItem(${index})" class="text-gray-400 hover:text-red-500 transition"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('seserahanTotalCost').textContent = formatRupiah(totalActualCost);
+        }
+
+        function getSeserahanBadgeClass(status) {
+            if (status === 'Dibungkus/Siap') return 'bg-emerald-100 text-emerald-700';
+            if (status === 'Dibeli') return 'bg-softblue-100 text-softblue-500';
+            return 'bg-amber-100 text-amber-700';
+        }
+
+        function updateSeserahanInline(index, field, value) {
+            appData.seserahan[index][field] = unformatRupiah(value);
+            saveData();
+            renderSeserahanTable();
+        }
+
+        function openSeserahanModal(editIdx = -1) {
+            document.getElementById('seserahanEditIndex').value = editIdx;
+            if (editIdx >= 0) {
+                const item = appData.seserahan[editIdx];
+                document.getElementById('modalSeserahanTitle').textContent = 'Edit Barang Seserahan';
+                document.getElementById('inputSeserahanName').value = item.name;
+                document.getElementById('inputSeserahanCategory').value = item.category;
+                document.getElementById('inputSeserahanQty').value = item.qty;
+                document.getElementById('inputSeserahanVendor').value = item.vendor;
+                document.getElementById('inputSeserahanLink').value = item.link;
+                document.getElementById('inputSeserahanEstimasi').value = item.estimasi;
+                document.getElementById('inputSeserahanAktual').value = item.aktual;
+                document.getElementById('inputSeserahanStatus').value = item.status;
+            } else {
+                document.getElementById('modalSeserahanTitle').textContent = 'Tambah Barang Seserahan';
+                document.getElementById('inputSeserahanName').value = '';
+                document.getElementById('inputSeserahanQty').value = 1;
+                document.getElementById('inputSeserahanVendor').value = '';
+                document.getElementById('inputSeserahanLink').value = '';
+                document.getElementById('inputSeserahanEstimasi').value = '';
+                document.getElementById('inputSeserahanAktual').value = '';
+            }
+            openModal('modalSeserahan');
+        }
+
+        function saveSeserahanItem() {
+            const idx = parseInt(document.getElementById('seserahanEditIndex').value);
+            const newItem = {
+                name: document.getElementById('inputSeserahanName').value || 'Barang Seserahan',
+                category: document.getElementById('inputSeserahanCategory').value,
+                qty: parseInt(document.getElementById('inputSeserahanQty').value) || 1,
+                vendor: document.getElementById('inputSeserahanVendor').value,
+                link: document.getElementById('inputSeserahanLink').value,
+                estimasi: parseFloat(document.getElementById('inputSeserahanEstimasi').value) || 0,
+                aktual: parseFloat(document.getElementById('inputSeserahanAktual').value) || 0,
+                status: document.getElementById('inputSeserahanStatus').value
+            };
+
+            if (idx >= 0) {
+                appData.seserahan[idx] = newItem;
+            } else {
+                appData.seserahan.push(newItem);
+            }
+
+            saveData();
+            renderSeserahanTable();
+            closeModal('modalSeserahan');
+        }
+
+        function editSeserahanItem(index) {
+            openSeserahanModal(index);
+        }
+
+        function deleteSeserahanItem(index) {
+            if (confirm('Hapus barang seserahan ini?')) {
+                appData.seserahan.splice(index, 1);
+                saveData();
+                renderSeserahanTable();
+            }
+        }
+
+        function renderKuaList() {
+            const container = document.getElementById('kuaListContainer');
+            container.innerHTML = '';
+
+            appData.kua.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = `p-4 rounded-xl border flex items-center justify-between transition ${item.completed ? 'bg-sage-50 border-sage-200' : 'bg-white border-gray-100'}`;
+                div.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <input type="checkbox" ${item.completed ? 'checked' : ''} onchange="toggleKuaStatus(${index})" class="w-5 h-5 rounded text-sage-600 focus:ring-sage-500 cursor-pointer">
+                        <div>
+                            <p class="text-sm font-semibold ${item.completed ? 'line-through text-gray-400' : 'text-gray-800'}">${escapeHtml(item.title)}</p>
+                            <p class="text-xs text-gray-400">${escapeHtml(item.notes || 'Tidak ada catatan')}</p>
+                        </div>
+                    </div>
+                    <button onclick="deleteKuaItem(${index})" class="text-gray-300 hover:text-red-500 transition text-sm">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function toggleKuaStatus(index) {
+            appData.kua[index].completed = !appData.kua[index].completed;
+            saveData();
+            renderKuaList();
+        }
+
+        function openKuaModal() {
+            document.getElementById('inputKuaTitle').value = '';
+            document.getElementById('inputKuaNotes').value = '';
+            openModal('modalKua');
+        }
+
+        function saveKuaItem() {
+            const title = document.getElementById('inputKuaTitle').value;
+            if (!title) return;
+            appData.kua.push({
+                id: Date.now(),
+                title: title,
+                notes: document.getElementById('inputKuaNotes').value,
+                completed: false
+            });
+            saveData();
+            renderKuaList();
+            closeModal('modalKua');
+        }
+
+        function deleteKuaItem(index) {
+            appData.kua.splice(index, 1);
+            saveData();
+            renderKuaList();
+        }
+
+        function renderTamuTable() {
+            const tbody = document.getElementById('tamuTableBody');
+            tbody.innerHTML = '';
+
+            appData.tamu.forEach((item, index) => {
+                if (currentTamuFilter !== 'ALL' && item.type !== currentTamuFilter) {
+                    return;
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-sage-50/50 transition";
+                tr.innerHTML = `
+                    <td class="p-4 font-semibold text-gray-800">${escapeHtml(item.name)}</td>
+                    <td class="p-4"><span class="px-2.5 py-1 text-xs rounded-full bg-sage-100 text-sage-700 font-medium">${escapeHtml(item.category)}</span></td>
+                    <td class="p-4 font-medium text-gray-600">${escapeHtml(item.type)}</td>
+                    <td class="p-4 font-bold text-gray-700">${item.pax || 1} Pax</td>
+                    <td class="p-4"><span class="px-2.5 py-1 text-xs rounded-full font-medium ${getRsvpBadgeClass(item.rsvp)}">${item.rsvp}</span></td>
+                    <td class="p-4"><span class="px-2.5 py-1 text-xs rounded-full font-medium ${item.status === 'Terkirim' ? 'bg-emerald-100 text-emerald-700' : 'bg-gray-100 text-gray-600'}">${item.status}</span></td>
+                    <td class="p-4 text-center space-x-2">
+                        <button onclick="editTamuItem(${index})" class="text-gray-400 hover:text-sage-600 transition"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteTamuItem(${index})" class="text-gray-400 hover:text-red-500 transition"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function getRsvpBadgeClass(rsvp) {
+            if (rsvp === 'Hadir') return 'bg-emerald-100 text-emerald-700';
+            if (rsvp === 'Ragu') return 'bg-amber-100 text-amber-700';
+            if (rsvp === 'Tidak Hadir') return 'bg-red-100 text-red-600';
+            return 'bg-gray-100 text-gray-600';
+        }
+
+        function filterTamu(type) {
+            currentTamuFilter = type;
+            document.querySelectorAll('.filter-tamu-btn').forEach(btn => {
+                btn.classList.remove('bg-sage-600', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-600');
+            });
+            event.target.classList.add('bg-sage-600', 'text-white');
+            event.target.classList.remove('bg-gray-100', 'text-gray-600');
+            renderTamuTable();
+        }
+
+        function openTamuModal(editIdx = -1) {
+            document.getElementById('tamuEditIndex').value = editIdx;
+            if (editIdx >= 0) {
+                const item = appData.tamu[editIdx];
+                document.getElementById('modalTamuTitle').textContent = 'Edit Tamu Undangan';
+                document.getElementById('inputTamuName').value = item.name;
+                document.getElementById('inputTamuCategory').value = item.category;
+                document.getElementById('inputTamuType').value = item.type;
+                document.getElementById('inputTamuPax').value = item.pax;
+                document.getElementById('inputTamuRsvp').value = item.rsvp;
+                document.getElementById('inputTamuStatus').value = item.status;
+            } else {
+                document.getElementById('modalTamuTitle').textContent = 'Tambah Tamu Undangan';
+                document.getElementById('inputTamuName').value = '';
+                document.getElementById('inputTamuPax').value = 1;
+            }
+            openModal('modalTamu');
+        }
+
+        function saveTamuItem() {
+            const idx = parseInt(document.getElementById('tamuEditIndex').value);
+            const newItem = {
+                name: document.getElementById('inputTamuName').value || 'Tamu',
+                category: document.getElementById('inputTamuCategory').value,
+                type: document.getElementById('inputTamuType').value,
+                pax: parseInt(document.getElementById('inputTamuPax').value) || 1,
+                rsvp: document.getElementById('inputTamuRsvp').value,
+                status: document.getElementById('inputTamuStatus').value
+            };
+
+            if (idx >= 0) {
+                appData.tamu[idx] = newItem;
+            } else {
+                appData.tamu.push(newItem);
+            }
+
+            saveData();
+            renderTamuTable();
+            closeModal('modalTamu');
+        }
+
+        function editTamuItem(index) {
+            openTamuModal(index);
+        }
+
+        function deleteTamuItem(index) {
+            if (confirm('Hapus tamu ini dari daftar?')) {
+                appData.tamu.splice(index, 1);
+                saveData();
+                renderTamuTable();
+            }
+        }
+
+        function renderVendorTable() {
+            const tbody = document.getElementById('vendorTableBody');
+            tbody.innerHTML = '';
+
+            appData.vendor.forEach((item, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-sage-50/50 transition";
+                tr.innerHTML = `
+                    <td class="p-4 font-semibold text-gray-800">${escapeHtml(item.name)}</td>
+                    <td class="p-4"><span class="px-2.5 py-1 text-xs rounded-full bg-sage-100 text-sage-700 font-medium">${escapeHtml(item.category)}</span></td>
+                    <td class="p-4 font-medium text-sage-600">${escapeHtml(item.contact || '-')}</td>
+                    <td class="p-4"><span class="px-2.5 py-1 text-xs rounded-full font-medium ${item.status === 'Deal / Kontrak' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">${item.status}</span></td>
+                    <td class="p-4 font-medium text-softblue-500">${formatRupiah(item.dp)}</td>
+                    <td class="p-4 font-bold text-gray-700">${formatRupiah(item.total)}</td>
+                    <td class="p-4 text-xs text-gray-500 max-w-xs truncate">${escapeHtml(item.notes || '-')}</td>
+                    <td class="p-4 text-center space-x-2">
+                        <button onclick="editVendorItem(${index})" class="text-gray-400 hover:text-sage-600 transition"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteVendorItem(${index})" class="text-gray-400 hover:text-red-500 transition"><i class="fa-solid fa-trash-can"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function openVendorModal(editIdx = -1) {
+            document.getElementById('vendorEditIndex').value = editIdx;
+            if (editIdx >= 0) {
+                const item = appData.vendor[editIdx];
+                document.getElementById('modalVendorTitle').textContent = 'Edit Vendor';
+                document.getElementById('inputVendorName').value = item.name;
+                document.getElementById('inputVendorCategory').value = item.category;
+                document.getElementById('inputVendorContact').value = item.contact;
+                document.getElementById('inputVendorStatus').value = item.status;
+                document.getElementById('inputVendorDP').value = item.dp;
+                document.getElementById('inputVendorTotal').value = item.total;
+                document.getElementById('inputVendorNotes').value = item.notes;
+            } else {
+                document.getElementById('modalVendorTitle').textContent = 'Tambah Vendor Baru';
+                document.getElementById('inputVendorName').value = '';
+                document.getElementById('inputVendorContact').value = '';
+                document.getElementById('inputVendorDP').value = '';
+                document.getElementById('inputVendorTotal').value = '';
+                document.getElementById('inputVendorNotes').value = '';
+            }
+            openModal('modalVendor');
+        }
+
+        function saveVendorItem() {
+            const idx = parseInt(document.getElementById('vendorEditIndex').value);
+            const newItem = {
+                name: document.getElementById('inputVendorName').value || 'Nama Vendor',
+                category: document.getElementById('inputVendorCategory').value,
+                contact: document.getElementById('inputVendorContact').value,
+                status: document.getElementById('inputVendorStatus').value,
+                dp: parseFloat(document.getElementById('inputVendorDP').value) || 0,
+                total: parseFloat(document.getElementById('inputVendorTotal').value) || 0,
+                notes: document.getElementById('inputVendorNotes').value
+            };
+
+            if (idx >= 0) {
+                appData.vendor[idx] = newItem;
+            } else {
+                appData.vendor.push(newItem);
+            }
+
+            saveData();
+            renderVendorTable();
+            closeModal('modalVendor');
+        }
+
+        function editVendorItem(index) {
+            openVendorModal(index);
+        }
+
+        function deleteVendorItem(index) {
+            if (confirm('Hapus vendor ini?')) {
+                appData.vendor.splice(index, 1);
+                saveData();
+                renderVendorTable();
+            }
+        }
+
+        function renderChecklistTimeline() {
+            const container = document.getElementById('checklistTimelineContainer');
+            container.innerHTML = '';
+
+            const timelines = ['H-6 Bulan', 'H-3 Bulan', 'H-1 Bulan', 'Hari H'];
+
+            timelines.forEach(tl => {
+                const items = appData.checklist.filter(c => c.timeline === tl);
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-2xl border border-sage-100 shadow-xs space-y-4";
+
+                let itemsHTML = items.map((item) => {
+                    const realIndex = appData.checklist.findIndex(x => x.id === item.id);
+                    return `
+                        <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-sage-50 transition">
+                            <label class="flex items-center gap-3 cursor-pointer flex-1">
+                                <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklistDone(${realIndex})" class="w-4 h-4 text-sage-600 rounded focus:ring-sage-500">
+                                <span class="text-sm font-medium ${item.done ? 'line-through text-gray-400' : 'text-gray-700'}">${escapeHtml(item.task)}</span>
+                            </label>
+                            <button onclick="deleteChecklistTask(${realIndex})" class="text-gray-300 hover:text-red-500 text-xs px-2"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    `;
+                }).join('');
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-center border-b border-sage-100 pb-3">
+                        <h4 class="font-serif-custom font-bold text-sage-700">${tl}</h4>
+                        <button onclick="addChecklistTask('${tl}')" class="text-xs font-semibold text-sage-600 hover:text-sage-700">+ Tambah</button>
+                    </div>
+                    <div class="space-y-1">
+                        ${itemsHTML || '<p class="text-xs text-gray-400 italic p-2">Belum ada tugas.</p>'}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleChecklistDone(idx) {
+            appData.checklist[idx].done = !appData.checklist[idx].done;
+            saveData();
+            renderChecklistTimeline();
+        }
+
+        function addChecklistTask(timeline) {
+            const task = prompt(`Tambah tugas untuk timeline ${timeline}:`);
+            if (task) {
+                appData.checklist.push({
+                    id: 'c_' + Date.now(),
+                    timeline: timeline,
+                    task: task,
+                    done: false
+                });
+                saveData();
+                renderChecklistTimeline();
+            }
+        }
+
+        function deleteChecklistTask(idx) {
+            appData.checklist.splice(idx, 1);
+            saveData();
+            renderChecklistTimeline();
+        }
+
+        function renderStickyNotes() {
+            const container = document.getElementById('stickyNotesContainer');
+            container.innerHTML = '';
+
+            const bgColors = ['bg-dusty-100/70', 'bg-sage-100/70', 'bg-softblue-100/70', 'bg-amber-100/70'];
+
+            appData.notes.forEach((note, index) => {
+                const colorClass = bgColors[index % bgColors.length];
+                const card = document.createElement('div');
+                card.className = `${colorClass} p-5 rounded-2xl border border-white/50 shadow-xs flex flex-col justify-between h-48 space-y-3 relative group`;
+                card.innerHTML = `
+                    <textarea onchange="updateNoteText(${index}, this.value)" class="w-full h-full bg-transparent resize-none border-none focus:outline-none text-sm text-gray-700 leading-relaxed font-medium" placeholder="Tulis catatan di sini...">${escapeHtml(note.text)}</textarea>
+                    <div class="flex justify-between items-center text-xs text-gray-400 pt-2 border-t border-black/5">
+                        <span>Note #${index + 1}</span>
+                        <button onclick="deleteNote(${index})" class="text-gray-400 hover:text-red-500 transition"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function addStickyNote() {
+            appData.notes.push({
+                id: Date.now(),
+                text: '💡 Catatan baru...'
+            });
+            saveData();
+            renderStickyNotes();
+        }
+
+        function updateNoteText(index, text) {
+            appData.notes[index].text = text;
+            saveData();
+        }
+
+        function deleteNote(index) {
+            appData.notes.splice(index, 1);
+            saveData();
+            renderStickyNotes();
+        }
+
+        /* GENERAL MODAL CONTROLLERS */
+        function openModal(id) {
+            document.getElementById(id).classList.add('modal-active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('modal-active');
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        /* INITIAL RUN ON DOM LOADED */
+        window.onload = function() {
+            loadData();
+            initDashboard();
+            renderBudgetTable();
+            renderSeserahanTabs();
+            renderSeserahanTable();
+            renderKuaList();
+            renderTamuTable();
+            renderVendorTable();
+            renderChecklistTimeline();
+            renderStickyNotes();
+        };
+    </script>
+</body>
+</html>
